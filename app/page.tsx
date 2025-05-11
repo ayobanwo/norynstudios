@@ -1,5 +1,4 @@
 "use client"
-// import React from "react";
 import CountdownTimer from "./components/countdown-timer";
 import Image from "next/image";
 
