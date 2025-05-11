@@ -4,27 +4,27 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center  min-h-screen p-8 bg-[#1a1a1a] h-min-[100vh]">
             <div className="bg-white  rounded-xl  p-3 w-[1000px] ">
-                <div className="flex gap-3">
+                <div className="flex gap-3 ">
                     <Image
                         src="/images/image 9.png"
                         alt="Hero Image"
                         width={503}
                         height={350}
-                        className="rounded-xl h-[250px] w-[350px] "
+                        className="rounded-xl h-[300px] w-[450px] "
                     />
                     <Image
                         src="/images/Frame 131198.png"
                         alt="Hero Image"
                         width={244}
                         height={350}
-                        className="rounded-xl h-[250px] w-[200px] "
+                        className="rounded-xl h-[300px] w-[300px] "
                     />
                     <Image
                         src="/images/Frame 131199.png"
                         alt="Hero Image"
                         width={592}
                         height={350}
-                        className="rounded-xl h-[250px] w-[392px] " 
+                        className="rounded-xl h-[300px] w-[500px] " 
                     />
 
                 </div>
@@ -35,14 +35,14 @@ export default function Home() {
                         alt="Hero Image"
                         width={244}
                         height={350}
-                        className="rounded-xl h-[220px] w-[200px] basis-2/12" 
+                        className="rounded-xl h-[250px] w-[170px] basis-2/12" 
                     />
                     <Image
                         src="/images/Frame 131197.png"
                         alt="Hero Image"
                         width={244}
                         height={350}
-                        className="rounded-xl h-[220px] w-[200px] basis-2/12" 
+                        className="rounded-xl h-[250px] w-[170px] basis-2/12" 
                     />
                     <div className="bg-[#1A1A1A] flex w-full items-start p-5 font-montserrat basis-8/12 rounded-xl">
                         <div className="basis-7/12">
