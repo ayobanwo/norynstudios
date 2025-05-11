@@ -1,92 +1,70 @@
+"use client"
+// import React from "react";
+import CountdownTimer from "./components/countdown-timer";
 import Image from "next/image";
 
-export default function Home() {
-    return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-            <Image
-            className=""
-            src="/images/noryn.png"
-            alt="Noryn logo"
-            width={180}
-            height={38}
-            priority
-            />
-            
+import { useEffect, useState } from "react"
+import { HardHat, Hammer, Wrench, Ruler, Truck } from "lucide-react"
 
-            <div className="flex gap-4 items-center flex-col sm:flex-row">
-            <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <Image
-                className="dark:invert"
-                src="/vercel.svg"
-                alt="Vercel logomark"
-                width={20}
-                height={20}
-                />
-                Deploy now
-            </a>
-            <a
-                className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-                href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Read our docs
-            </a>
+export default function Home() {
+    const [activeIcon, setActiveIcon] = useState(0)
+  const icons = [
+    { icon: HardHat, color: "text-yellow-500" },
+    { icon: Hammer, color: "text-blue-500" },
+    { icon: Wrench, color: "text-red-500" },
+    { icon: Ruler, color: "text-green-500" },
+    { icon: Truck, color: "text-purple-500" },
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIcon((prev) => (prev + 1) % icons.length)
+    }, 1500)
+
+    return () => clearInterval(interval)
+  }, [])
+    return (
+        <div className=" flex flex-col justify-center items-center min-h-[100vh] bg-gradient-to-b from-gray-900 to-black font-[family-name:var(--font-geist-sans)] ">
+            <div className="max-w-3xl w-full py-20 bg-gray-800 rounded-lg shadow-lg border border-gray-700 ">
+
+                <div className=" flex items-center justify-center">
+                    <div className="w-32 h-32 rounded-full bg-gray-100 flex items-center justify-center">
+                    {icons.map((Icon, index) => {
+                        const IconComponent = Icon.icon
+                        return (
+                        <IconComponent
+                            key={index}
+                            className={`absolute h-16 w-16 transition-all duration-500 ${Icon.color} ${
+                            index === activeIcon ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                            }`}
+                        />
+                        )
+                    })}
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center mt-10">
+                    <Image
+                        src="/images/noryn.png"
+                        alt="Hero Image"
+                        width={200}
+                        height={200}
+                        className=""
+                    />
+                    <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-gray-300 mt-8">Under Construction</h2>
+                    <p className="text-gray-400 mt-4 max-w-[700px] text-center px-2">
+                        We're working hard to bring you something amazing. Our website is currently under construction, but
+                        we'll be launching soon.
+                    </p>
+
+                </div>
+                <div className="flex justify-center mt-6">
+
+                    <CountdownTimer targetDate="2025-06-10T00:00:00" />
+                </div>
             </div>
-        </main>
-        <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-            <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <Image
-                aria-hidden
-                src="/file.svg"
-                alt="File icon"
-                width={16}
-                height={16}
-            />
-            Learn
-            </a>
-            <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <Image
-                aria-hidden
-                src="/window.svg"
-                alt="Window icon"
-                width={16}
-                height={16}
-            />
-            Examples
-            </a>
-            <a
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            <Image
-                aria-hidden
-                src="/globe.svg"
-                alt="Globe icon"
-                width={16}
-                height={16}
-            />
-            Go to nextjs.org →
-            </a>
-        </footer>
+
+
         </div>
     );
 }
