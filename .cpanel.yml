@@ -3,6 +3,6 @@ deployment:
   tasks:
     - export DEPLOY_PATH=/home/thenslzf/norynstudios.com
     - cd $DEPLOY_PATH
-    - /opt/cpanel/ea-nodejs18/bin/npm install
-    - /opt/cpanel/ea-nodejs18/bin/npm run build
-    - /opt/cpanel/ea-nodejs18/bin/npm run start
+    - /opt/cpanel/ea-nodejs22/bin/npm install
+    - /opt/cpanel/ea-nodejs22/bin/npm run build
+    - /opt/cpanel/ea-nodejs22/bin/npm run start
